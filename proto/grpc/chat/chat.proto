@@ -1,0 +1,48 @@
+syntax = "proto3";
+option go_package="github.com/tap2joy/Protocols/grpc/chat";
+
+// 发送消息
+message SendMessageRequest {
+    string sender_name = 1; // 发送者名字
+    uint32 channel = 2;     // 发送频道
+    string content = 3;     // 聊天内容
+}
+
+message SendMessageResponse {
+    string result = 1;      // 执行命令返回结果
+}
+
+message ChatLogInfo {
+    string sender_name = 1; // 发送者名字
+    string content = 2;     // 聊天内容
+    uint64 timestamp = 3;   // 时间戳
+}
+
+// 获取历史聊天记录
+message GetChatLogRequest {
+    uint32 channel = 1;     // 频道
+}
+
+message GetChatLogResponse {
+    repeated ChatLogInfo logs = 1;  // 历史记录
+}
+
+// 获取可用的频道列表
+message GetChannelListRequest {
+
+}
+
+message ChannelInfo {
+    uint32 id = 1;      // 频道id
+    string desc = 2;    // 频道描述
+}
+
+message GetChannelListResponse {
+    repeated ChannelInfo list = 1;
+}
+
+service ChatService {
+    rpc SendMessage(SendMessageRequest) returns (SendMessageResponse) {}
+    rpc GetChatLog(GetChatLogRequest) returns (GetChatLogResponse) {}
+    rpc GetChannelList(GetChannelListRequest) returns (GetChannelListResponse) {}
+}

@@ -1,0 +1,96 @@
+syntax = "proto3";
+option go_package="github.com/tap2joy/Protocols/grpc/center";
+
+// 用户数据
+message UserInfo {
+    string name = 2;
+    string gateway = 3;
+}
+
+// 根据上线
+message UserOnlineRequest {
+    string name = 1;
+    string gate = 2;
+    uint32 channel = 3;
+}
+
+message UserOnlineResponse {
+    UserInfo old_user = 1;
+}
+
+// 用户下线
+message UserOfflineRequest {
+    string name = 1;
+}
+
+message UserOfflineResponse {
+
+}
+
+// 注册服务
+message RegisterServiceRequest {
+    string type = 1;
+    string address = 2;
+}
+
+message RegisterServiceResponse {
+
+}
+
+// 获取服务列表
+message GetServicesRequest {
+    string type = 1;    // 服务类型
+}
+
+message GetServicesResponse {
+    repeated string list = 1;   // 服务对应的地址列表
+}
+
+// 获取指定频道的在线用户列表
+message GetOnlineUsersRequest {
+    uint32 channel = 1;
+}
+
+message GetOnlineUsersResponse {
+    repeated UserInfo users = 1;
+}
+
+// 获取用户在线时间
+message GetUserOnlineTimeRequest {
+    string name = 1;
+}
+
+message GetUserOnlineTimeResponse {
+    uint32 duration = 1;
+}
+
+// 心跳
+message HeartBeatRequest {
+    string type = 1;
+    string address = 2;
+}
+
+message HeartBeatResponse {
+    int64 timestamp = 1;
+}
+
+// 切换频道
+message ChangeChannelRequest {
+    string name = 1;
+    uint32 channel = 2;
+}
+
+message ChangeChannelResponse {
+
+}
+
+service CenterService {
+    rpc UserOnline(UserOnlineRequest) returns (UserOnlineResponse) {}
+    rpc UserOffline(UserOfflineRequest) returns (UserOfflineResponse) {}
+    rpc RegisterService(RegisterServiceRequest) returns (RegisterServiceResponse) {}
+    rpc GetServices(GetServicesRequest) returns (GetServicesResponse) {}
+    rpc GetOnlineUsers(GetOnlineUsersRequest) returns (GetOnlineUsersResponse) {}
+    rpc GetUserOnlineTime(GetUserOnlineTimeRequest) returns (GetUserOnlineTimeResponse) {}
+    rpc HeartBeat(HeartBeatRequest) returns (HeartBeatResponse) {}
+    rpc ChangeChannel(ChangeChannelRequest) returns (ChangeChannelResponse) {}
+}

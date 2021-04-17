@@ -1,0 +1,36 @@
+syntax = "proto3";
+option go_package="github.com/tap2joy/Protocols/go/common";
+
+enum ErrorCode {
+  SUCCESS = 0;
+
+  UNKNOWN_ERROR = 1;
+  PARAMETER_ERROR = 2;
+  USER_NOT_EXIST_ERROR = 3;
+  USER_EXIST_ERROR = 4;
+  SERVICE_NOT_EXIST_ERROR = 5;
+  SERVICE_EXIST_ERROR = 6;
+  CHANNEL_NOT_EXIST_ERROR = 7;
+  CHANNEL_EXIST_ERROR = 8;
+}
+
+// 协议号(message id)
+enum Mid {
+    INVALID_MID = 0;
+
+    C2G_USER_LOGIN = 100;
+    C2G_USER_LOGOUT = 101;
+    C2G_SEND_MESSAGE = 102;
+    C2G_GET_LOGS = 103;
+    C2G_CHANGE_CHANNEL = 104;
+    C2G_GET_CHANNEL_LIST = 105;
+
+    G2C_USER_LOGIN = 200;
+    G2C_USER_LOGOUT = 201;
+    G2C_SEND_MESSAGE = 202;
+    G2C_GET_LOGS = 203;
+    G2C_PUSH_MESSAGE = 204;
+    G2C_KICK_USER = 205;
+    G2C_CHANGE_CHANNEL = 206;
+    G2C_GET_CHANNEL_LIST = 207;
+}
