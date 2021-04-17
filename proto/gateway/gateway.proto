@@ -8,8 +8,10 @@ message CLogin {
 }
 
 message SLogin {
-    string name = 1;
-    uint32 channel = 2;
+    int32 code = 1;
+    string msg = 2;
+    string name = 3;
+    uint32 channel = 4;
 }
 
 // 登出
@@ -18,7 +20,9 @@ message CLogout {
 }
 
 message SLogout {
-    string name = 1;
+    int32 code = 1;
+    string msg = 2;
+    string name = 3;
 }
 
 // 进入指定聊天室
@@ -28,8 +32,10 @@ message CChangeChannel {
 }
 
 message SChangeChannel {
-    uint32 channel = 1;
-    repeated ChatLog logs = 2;  // 该频道的聊天记录
+    int32 code = 1;
+    string msg = 2;
+    uint32 channel = 3;
+    repeated ChatLog logs = 4;  // 该频道的聊天记录
 }
 
 // 发送消息
@@ -41,7 +47,9 @@ message CSend {
 }
 
 message SSend {
-    string result = 1;
+    int32 code = 1;
+    string msg = 2;
+    string result = 3;
 }
 
 message ChatLog {
@@ -56,7 +64,9 @@ message CGetLog {
 }
 
 message SGetLog {
-    repeated ChatLog logs = 1;
+    int32 code = 1;
+    string msg = 2;
+    repeated ChatLog logs = 3;
 }
 
 // 推送消息
@@ -73,7 +83,7 @@ message SKickUser {
 
 // 获取频道列表
 message CGetChannelList {
-
+    string name = 1;
 }
 
 message ChannelData {
@@ -82,5 +92,7 @@ message ChannelData {
 }
 
 message SGetChannelList {
-    repeated ChannelData list = 1;
+    int32 code = 1;
+    string msg = 2;
+    repeated ChannelData list = 3;
 }
