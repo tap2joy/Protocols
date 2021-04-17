@@ -34,6 +34,7 @@ enum Mid {
     G2C_KICK_USER = 205;
     G2C_CHANGE_CHANNEL = 206;
     G2C_GET_CHANNEL_LIST = 207;
+    G2C_ERROR_MESSAGE = 208;
 }
 
 // 通用错误消息
