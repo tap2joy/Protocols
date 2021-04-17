@@ -5,14 +5,14 @@ option go_package="github.com/tap2joy/Protocols/go/common";
 enum ErrorCode {
   SUCCESS = 0;
 
-  UNKNOWN_ERROR = 1;  // 未知错误
-  PARAMETER_ERROR = 2;  // 参数错误
-  USER_NOT_EXIST_ERROR = 3; // 用户不存在
-  USER_EXIST_ERROR = 4; // 用户已经存在
-  SERVICE_NOT_EXIST_ERROR = 5;  // 服务不存在
-  SERVICE_EXIST_ERROR = 6;  // 服务已经存在
-  CHANNEL_NOT_EXIST_ERROR = 7;  // 频道不存在
-  CHANNEL_EXIST_ERROR = 8;  // 频道已经存在
+  UNKNOWN_ERROR = 1001;  // 未知错误
+  PARAMETER_ERROR = 1002;  // 参数错误
+  USER_NOT_EXIST_ERROR = 1003; // 用户不存在
+  USER_EXIST_ERROR = 1004; // 用户已经存在
+  SERVICE_NOT_EXIST_ERROR = 1005;  // 服务不存在
+  SERVICE_EXIST_ERROR = 1006;  // 服务已经存在
+  CHANNEL_NOT_EXIST_ERROR = 1007;  // 频道不存在
+  CHANNEL_EXIST_ERROR = 1008;  // 频道已经存在
 }
 
 // 协议号(message id)
