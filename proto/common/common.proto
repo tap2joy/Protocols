@@ -1,17 +1,18 @@
 syntax = "proto3";
 option go_package="github.com/tap2joy/Protocols/go/common";
 
+// 错误码枚举
 enum ErrorCode {
   SUCCESS = 0;
 
-  UNKNOWN_ERROR = 1;
-  PARAMETER_ERROR = 2;
-  USER_NOT_EXIST_ERROR = 3;
-  USER_EXIST_ERROR = 4;
-  SERVICE_NOT_EXIST_ERROR = 5;
-  SERVICE_EXIST_ERROR = 6;
-  CHANNEL_NOT_EXIST_ERROR = 7;
-  CHANNEL_EXIST_ERROR = 8;
+  UNKNOWN_ERROR = 1;  // 未知错误
+  PARAMETER_ERROR = 2;  // 参数错误
+  USER_NOT_EXIST_ERROR = 3; // 用户不存在
+  USER_EXIST_ERROR = 4; // 用户已经存在
+  SERVICE_NOT_EXIST_ERROR = 5;  // 服务不存在
+  SERVICE_EXIST_ERROR = 6;  // 服务已经存在
+  CHANNEL_NOT_EXIST_ERROR = 7;  // 频道不存在
+  CHANNEL_EXIST_ERROR = 8;  // 频道已经存在
 }
 
 // 协议号(message id)
@@ -33,4 +34,10 @@ enum Mid {
     G2C_KICK_USER = 205;
     G2C_CHANGE_CHANNEL = 206;
     G2C_GET_CHANNEL_LIST = 207;
+}
+
+// 通用错误消息
+message SErrorMessage {
+    int32 code = 1;
+    string msg = 2;
 }
